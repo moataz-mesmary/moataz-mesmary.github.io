@@ -523,34 +523,56 @@
                             </div>
                         </div>
 
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8">
-                                <form id="contactForm" action="https://formsubmit.co/moataz.mesmary@gmail.com" method="POST">
-                                    <input type="hidden" name="_subject" value="New contact form submission from portfolio">
-                                    <input type="hidden" name="_template" value="table">
-                                    <input type="hidden" name="_captcha" value="false">
-                                    <input type="hidden" name="_next" value="https://moataz-elmesmary.github.io/thankyou.html"> <div class="form-floating mb-3">
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
-                                        <label for="name">Full name</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required />
-                                        <label for="email">Email address</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" />
-                                        <label for="phone">Phone number (Optional)</label>
-                                    </div>
-                                    <div class="form-floating mb-3">
-                                        <textarea class="form-control" id="message" name="message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                    <div class="d-grid">
-                                        <button class="btn btn-primary btn-lg" type="submit">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                   <!-- Begin Contact Form Code - Copy from here -->
+<div class="row gx-5 justify-content-center">
+    <div class="col-lg-8">
+        <form id="contactForm" action="https://formsubmit.co/moataz.mesmary@gmail.com" method="POST">
+            <!-- FormSubmit Configuration -->
+            <input type="hidden" name="_subject" value="New contact form submission from portfolio">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://moataz-mesmary.github.io/thankyou.html">
+            
+            <!-- Honeypot field to prevent spam -->
+            <input type="text" name="_honey" style="display:none">
+            
+            <!-- Form Fields -->
+            <div class="form-floating mb-3">
+                <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
+                <label for="name">Full name</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required />
+                <label for="email">Email address</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" />
+                <label for="phone">Phone number (Optional)</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="message" name="message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                <label for="message">Message</label>
+            </div>
+            
+            <div class="d-grid">
+                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+            </div>
+        </form>
+        
+        <!-- Optional: Add this right before your form's closing div to add submission tracking -->
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                console.log('Form submitted');
+                document.getElementById('submitButton').textContent = 'Sending...';
+                document.getElementById('submitButton').disabled = true;
+            });
+        </script>
+    </div>
+</div>
+<!-- End Contact Form Code -->
 
                         <div class="text-center mt-5">
                             <h3 class="fw-bold mb-4 text-gradient section-heading">My Skills</h3>

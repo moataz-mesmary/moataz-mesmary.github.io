@@ -175,3 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Start animation
   animate();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(event) {
+        // Log the submission
+        console.log('Form submitted at ' + new Date().toLocaleTimeString());
+        
+        // Update button state
+        document.getElementById('submitButton').innerHTML = 'Sending...';
+        document.getElementById('submitButton').disabled = true;
+    });
+});
