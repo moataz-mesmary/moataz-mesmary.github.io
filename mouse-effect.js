@@ -253,6 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update the visitor count if the element exists
     if (visitorCountElement) {
         const count = getVisitorCount();
-        visitorCountElement.textContent = `👁️ Visitors: ${count}`;
+        visitorCountElement.textContent = `👁️ Current Visitors: ${count}`;
     }
 });
