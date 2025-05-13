@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2 {
+            color: #2c3e50;
+        }
+        
+        h1 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        .award-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .award-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .award-image {
+            flex: 0 0 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .award-text {
+            flex: 1 1 400px;
+        }
+        
+        .award-links {
+            margin-top: 15px;
+        }
+        
+        .award-links a {
+            display: inline-block;
+            margin-right: 15px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .award-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Me</h1>
+    </header>
+    
+    <section>
+        <p>I earned my bachelor's degree in Computer and Information Sciences from <strong>Mansoura University</strong>, specializing in <strong>Medical Informatics</strong>. This interdisciplinary program gave me a solid foundation in computer science and allowed me to explore how technology can address medical challenges.</p>
+        
+        <p>During my studies, I took courses such as Computer Vision, Digital Image Processing, AI and Health Information Management where I gained a deep understanding of medical image analysis.</p>
+        
+        <p>I led projects that taught me how to bridge theory and practice. My graduation project, "Smart Suit / Upper Exoskeleton for Patients with Paralysis Using AI and Robotics," integrated computer vision techniques like YOLOv7 and Mask R-CNN to create practical solutions for individuals with mobility challenges. By using a camera I measured the distance between the camera and the object and I segmented the object to make grasping easier. Leading this effort taught me problem-solving, and perseverance in overcoming challenges.</p>
+    </section>
+    
+    <section>
+        <h2>Projects</h2>
+        <p>I've worked on several projects that reflect my interest in AI and data-driven solutions. For instance, I developed a diabetes prediction system using Random Forest models and Flask for deployment. This project taught me how to handle end-to-end pipelines, from data preprocessing to deployment. Another project on car price prediction involved data visualization, regression, and clustering techniques.</p>
+        
+        <p>I applied image processing in a signature restoration project, where I tackled issues like noise removal and color restoration. I developed a machine learning model for breast cancer detection using perceptron and SLP, optimized the perceptron, preprocessed the data and visualized weight changes and accuracy over epochs to track model performance.</p>
+        
+        <p>I also worked on a smart wearable upper-limb exoskeleton controlled by voice commands which integrated object detection, segmentation, voice detection, simulation / AR with a mobile app. I went deeply into CNN, detection techniques, and I explored lane lines detection for self-driving cars through ITI summer computer vision internship.</p>
+    </section>
+    
+    <section>
+        <h2>Awards & Recognition</h2>
+        
+        <div class="award-item">
+            <div class="award-content">
+                <img src="/api/placeholder/400/320" alt="Ideal Student Award" class="award-image">
+                <div class="award-text">
+                    <h3>Ideal Student at Mansoura University</h3>
+                    <p>I'm proud to have been recognized as the <strong>"Ideal Student" at Mansoura University</strong> for 2022-2023. This honor was not simply about academic achievement but also recognized my leadership, community involvement, impact and dedication to personal growth.</p>
+                </div>
+            </div>
+            <div class="award-links">
+                <strong>Featured in:</strong>
+                <a href="https://www.alnaharegypt.com/947266" target="_blank">Al Nahar Egypt</a>
+                <a href="https://www.albawabhnews.com/4717882" target="_blank">Al Bawabh News</a>
+                <a href="https://bit.ly/IdealStd" target="_blank">Additional Coverage</a>
+            </div>
+        </div>
+        
+        <div class="award-item">
+            <div class="award-content">
+                <img src="/api/placeholder/400/320" alt="Scientific Gallery Award" class="award-image">
+                <div class="award-text">
+                    <h3>First Place - Scientific Gallery (Technology Field)</h3>
+                    <p>I won first place in the Scientific Gallery competition in the Technology Field category.</p>
+                </div>
+            </div>
+            <div class="award-links">
+                <strong>Proof:</strong>
+                <a href="https://drive.google.com/file/d/1_a27qVppPtSds2gZMP1Xzf064RpkGY94/view?usp=drivesdk" target="_blank">Shield Certificate</a>
+            </div>
+        </div>
+        
+        <div class="award-item">
+            <div class="award-content">
+                <img src="/api/placeholder/400/320" alt="Ebtekar Competition Award" class="award-image">
+                <div class="award-text">
+                    <h3>First Place - Ebtekar Competition (Robotics Field)</h3>
+                    <p>Out of 33 projects, we were chosen to represent our university in the Ebdaa Contest Stage, presented by the Ministry of Youth and Sports in Egypt.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="award-item">
+            <div class="award-content">
+                <img src="/api/placeholder/400/320" alt="MIE Finalist" class="award-image">
+                <div class="award-text">
+                    <h3>Finalist - Made In Egypt Competition</h3>
+                    <p>Out of 131 teams from different governorates of Egypt, we were one of the teams that qualified for the final stage in the Smart World Track.</p>
+                </div>
+            </div>
+        </div>
+        .award-image {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #9b59b6; /* purple border */
+            box-shadow: 0 4px 8px rgba(155, 89, 182, 0.2); /* soft purple shadow */
+            transition: transform 0.3s ease;
+        }
+        
+        .award-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .award-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .award-text {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+
+
+
+        <div class="award-item">
+            <div class="award-content">
+                <img src="/api/placeholder/400/320" alt="IoT & AI Challenge" class="award-image">
+                <div class="award-text">
+                    <h3>TOP 10 - Egypt IoT & AI Challenge</h3>
+                    <p>Our project was selected as one of the top 10 projects out of 200 graduation projects from all over Egypt.</p>
+                </div>
+            </div>
+            <div class="award-links">
+                <strong>Certification:</strong>
+                <a href="https://drive.google.com/file/d/19MI8OOwN0Gy3KdM1dcY3v1E3Qj4cFWBH/view?usp=drive_link" target="_blank">View Certificate</a>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Community Contributions</h2>
+        <p>Beyond academic and competitive accomplishments, I have actively contributed to the AI and data science community. I created the widely recognized Data Science Roadmap on GitHub, which has garnered over 3400 stars and 480 forks and has become a trusted resource and reference for aspiring data scientists and AI engineers worldwide.</p>
+        
+        <p>I have mentored more than 70 learners, providing guidance and led workshops and sessions both online and offline covering topics like data science, machine learning workflow and advanced visualization techniques.</p>
+        
+        <p>Through my roles in university committees and volunteer organizations, I've honed my ability to lead teams, manage time effectively, and communicate ideas clearly. I'm also highly adaptable, as shown by my ability to balance academics, extracurriculars, and internships.</p>
+    </section>
+    
+    <section>
+        <h2>Connect With Me</h2>
+        <div class="social-links">
+            <a href="#" target="_blank">LinkedIn</a>
+            <a href="#" target="_blank">GitHub</a>
+            <a href="#" target="_blank">Twitter</a>
+            <a href="mailto:your-email@example.com">Email</a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 All Rights Reserved</p>
+    </footer>
+</body>
+</html>

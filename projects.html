@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Projects - Moataz Elmesmary </title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/seo.ico" />
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            /* Project Card Styles - Improved */
+            .project-image-container {
+                overflow: hidden;
+                border-radius: 0.5rem 0.5rem 0 0;
+                position: relative;
+                height: 320px; /* Increased height for images */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #f8f9fa; /* Light background for image area */
+            }
+            
+            .project-image-container img {
+                max-width: 95%;
+                max-height: 300px; /* Increased height for images */
+                object-fit: contain; /* Prevent cropping */
+                transition: transform 0.4s ease;
+            }
+            
+            .project-image-container:hover img {
+                transform: scale(1.05);
+            }
+            
+            /* Special case for card 2 - double image display */
+            .two-images-container {
+                display: flex;
+                flex-direction: column;
+                height: 320px;
+                justify-content: space-around;
+                align-items: center;
+            }
+            
+            .two-images-container img {
+                max-width: 95%;
+                max-height: 150px; /* Half height for each image */
+                margin: 5px 0;
+            }
+            
+            .project-content {
+                padding: 1rem;
+                height: 200px; /* Reduced height for content area */
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .project-title {
+                font-size: 1.2rem;
+                margin-bottom: 0.3rem;
+                line-height: 1.2;
+                font-weight: 700;
+                height: 2.5rem; /* Reduced height for title */
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+            
+            .project-tech {
+                font-size: 0.85rem;
+                margin-bottom: 0.3rem;
+                color: #6c757d;
+                font-weight: 600;
+                height: 1.3rem; /* Reduced height for tech stack */
+                overflow: hidden;
+            }
+            
+            .project-description {
+                font-size: 0.85rem;
+                flex-grow: 1;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2; /* Reduced to 2 lines */
+                -webkit-box-orient: vertical;
+                margin-bottom: 0.5rem;
+            }
+            
+            .project-actions {
+                margin-top: auto;
+            }
+            
+            /* Equal height cards */
+            .project-card {
+                height: 100%;
+                margin-bottom: 1.5rem;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 767.98px) {
+                .project-content {
+                    height: auto;
+                }
+            }
+            
+            /* Section styling */
+            .py-5 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            /* Call to action gradient */
+            .bg-gradient-primary-to-secondary {
+                background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;
+            }
+            
+            /* Button styling */
+            .project-button {
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            /* Text gradient for headers */
+            .text-gradient {
+                background: linear-gradient(45deg, #2937f0, #9f1ae2);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Moataz Elmesmary <i class="bi bi-code-slash"></i></span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html#About me">About Me</a></li>
+                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Projects Section-->
+            <section class="py-5">
+                <div class="container px-4 px-lg-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
+                        <br>
+                        <h5>A sample of the projects I've been working on</h5>
+                    </div>
+                    
+                    <!-- Projects Row 1 -->
+                    <div class="row gx-4 gy-5">
+                        <!-- Project Card 1-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://public.tableau.com/app/profile/moataz.elemsmary/viz/SuperstoreProject_17464565209490/Dashboard1" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/Xv75qnTK/111.png" alt="Superstore Sales & Customer Analytics" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Superstore Sales & Customer Analytics</h2>
+                                    <p class="project-tech"><b>Tableau</b></p>
+                                    <p class="project-description">KPIs, trends, and product/customer insights with drill-down capabilities.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" 
+                                           href="https://public.tableau.com/app/profile/moataz.elemsmary/viz/SuperstoreProject_17464565209490/Dashboard1" 
+                                           target="_blank">
+                                            Tableau <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" 
+                                                      alt="Tableau Logo" 
+                                                      style="height: 15px; margin-left: 5px;">
+                                        </a>
+                                        <a class="btn btn-outline-primary btn-sm project-button ms-2" href="https://github.com/Moataz-Elmesmary/Superstore-Dashboard-Using-Tableau" target="_blank">Details <i class="bi bi-github"></i></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Card 2-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/Egyptian-Mobile-Store-Sales-Analysis" target="_blank">
+                                        <div class="project-image-container">
+                                            <img class="img-fluid" src="https://i.postimg.cc/yYjYd0B5/tryrtytr.png" alt="Egyptian Mobile Store Sales Analysis - Image 1" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Egyptian Mobile Store Sales Analysis</h2>
+                                    <p class="project-tech"><b>Excel | DAX</b></p>
+                                    <p class="project-description">An end-to-end sales analytics solution analyzing 160M+ EGP across 12+ branches. Developed 15+ DAX measures and uncovered key business insights.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/Egyptian-Mobile-Store-Sales-Analysis" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Projects Row 2 -->
+                    <div class="row gx-4 gy-5">
+                        <!-- Project Card 3-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/PowerPI-Project" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/yYp4tj7V/1.png" alt="PowerBI project (Sales Company)" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">PowerBI project (Sales Company)</h2>
+                                    <p class="project-tech"><b>Power BI | DAX</b></p>
+                                    <p class="project-description">Dynamic dashboards with clean data transformation for real-time insights.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/PowerPI-Project" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Card 4-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/Apriori-Algorithm-and-Association-Rule-Mining" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/CKmjsRj6/Top20-Lift-Network-Graph.png" alt="Egyptian Grocery Market Basket Analysis" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Egyptian Grocery Market Basket Analysis</h2>
+                                    <p class="project-tech"><b>Python | Pandas | Apriori algorithm</b></p>
+                                    <p class="project-description">Association rules with support, confidence, lift metrics. Network graph for top 20 rules.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/Apriori-Algorithm-and-Association-Rule-Mining" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Projects Row 3 -->
+                    <div class="row gx-4 gy-5">
+                        <!-- Project Card 5-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Exous-Team/README" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/qv9RV4pM/280400077-5624a07f-eb0c-472b-a992-c5e850183db5.jpg" alt="Smart Upper-Exoskeleton" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Smart Upper-Exoskeleton for Patients with Paralysis</h2>
+                                    <p class="project-tech"><b>Computer Vision | Speech Recognition | Team Leader</b></p>
+                                    <p class="project-description">YOLOv7 detection, Mask RCNN segmentation, and Whisper OpenAI voice recognition.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Exous-Team/README" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                        <a class="btn btn-outline-primary btn-sm project-button ms-2" href="https://www.youtube.com/watch?v=J7khKzDMe1c" target="_blank">Video <i class="bi bi-youtube"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Card 6-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/Egyptian-Mobile-Store-Sales-Analysis" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/jSjqJCSj/fsdfsd.png" alt="Superstore Sales Dashboard" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Sales & Customers Dashboard</h2>
+                                    <p class="project-tech"><b>Excel | DAX</b></p>
+                                    <p class="project-description">Sales efficiency analytics with performance, segmentation, and profitability insights.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/Egyptian-Mobile-Store-Sales-Analysis" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                                        <!-- Projects Row 4 -->
+                    <div class="row gx-4 gy-5">
+                        <!-- Project Card 7-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/Car-Prices-Prediction-using-ML-Full-Project-/blob/main/CarPriceProj.ipynb" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/qMsdcGMx/266baf21-0556-4f9f-ab23-43fec1619e03-1.png" alt="PowerBI project (Sales Company)" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Car Prices Prediction</h2>
+                                    <p class="project-tech"><b>Data Preprocessing | Machine Learning | Visualization</b></p>
+                                    <p class="project-description">Cleaned the dataset and Visualized trends to identify pricing patterns.
+Applied Classification, Regression, Hierarchical Clustering. and K-Means</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/Car-Prices-Prediction-using-ML-Full-Project-/blob/main/CarPriceProj.ipynb" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Card 8-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/Perceptron-Breast-Cancer/tree/main" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/8zTgZr7Q/maxresdefault.jpg" alt="Egyptian Grocery Market Basket Analysis" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Breast Cancer Detection Using Perceptron and SLP</h2>
+                                    <p class="project-tech"><b>Machine Learning | Perceptron and SLP</b></p>
+                                    <p class="project-description">Developed a machine learning model achieving 95% accuracy in breast cancer classification. Optimized the perceptron 
+,Preprocessed the data and Visualized weight changes and accuracy over epochs to track model convergence.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/Perceptron-Breast-Cancer/tree/main" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                                                            <!-- Projects Row 5 -->
+                    <div class="row gx-4 gy-5">
+                        <!-- Project Card 9-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/Genomics-Project" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/MpR2ZbgQ/Capture-1.png" alt="PowerBI project (Sales Company)" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Diabetes Prediction (Web App Based on ML)</h2>
+                                    <p class="project-tech"><b>Data Preprocessing | Machine Learning | Model Deployment</b></p>
+                                    <p class="project-description">Preprocessed data and trained a Random Forest model (85% accuracy).
+Deployed the model using Flask for real-time predictions.</p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/Genomics-Project" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Card 10-->
+                        <div class="col-md-6 col-lg-6 mb-5">
+                            <div class="card shadow rounded-4 border-0 h-100 project-card">
+                                <div class="project-image-container">
+                                    <a href="https://github.com/Moataz-Elmesmary/Image-Processing-Signature-Restoration-" target="_blank">
+                                        <img class="img-fluid" src="https://i.postimg.cc/cJ4p7yrQ/167227169-8c39f0ef-9b9a-4313-9d50-8fad7f2b8ba9-1.jpg" alt="Egyptian Grocery Market Basket Analysis" />
+                                    </a>
+                                </div>
+                                <div class="card-body p-4 project-content">
+                                    <h2 class="project-title">Signature Restoration</h2>
+                                    <p class="project-tech"><b>Image Preprocessing | Matlab</b></p>
+                                    <p class="project-description"> </p>
+                                    <div class="project-actions">
+                                        <a class="btn btn-outline-dark btn-sm project-button" href="https://github.com/Moataz-Elmesmary/Image-Processing-Signature-Restoration-" target="_blank">GitHub <i class="bi bi-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gx-4 gy-5">
+                        <!-- Additional projects can be added here following the same pattern -->
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Call to action section-->
+            <section class="py-5 bg-gradient-primary-to-secondary text-white">
+                <div class="container px-5 my-5">
+                    <div class="text-center">
+                        <h2 class="display-4 fw-bolder mb-4">Let's build something together</h2>
+                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Contact me</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer-->
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto">
+                        <div class="small m-0">Copyright &copy; 2025 Moataz Elmesmary</div>
+                    </div>
+                    <div class="col-auto">
+                        <a class="small" href="/privacy.html">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="/terms.html">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="/contact.html">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

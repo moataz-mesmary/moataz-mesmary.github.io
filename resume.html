@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Resume - Moataz Elmesmary</title>
+    <link rel="icon" type="image/x-icon" href="assets/seo.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <style>
+        /* Main color scheme (Ensure consistency with contact page if desired) */
+        :root {
+            --primary-color: #2937f0;
+            --secondary-color: #9f1ae2;
+            /* Add other colors if needed, mirroring contact.html */
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+             /* Define Bootstrap primary color if not already in styles.css */
+            --bs-primary: #2937f0; /* Assuming this is your primary color */
+        }
+
+         body {
+            position: relative;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            background-color: #fdfdfd; /* Consistent background */
+            /* Prevent selection of background elements */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+
+        /* Gradient text effect (Used on main title and other text-gradient elements) */
+        .text-gradient {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bg-gradient-primary-to-secondary {
+             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) !important;
+        }
+
+
+        /* --- Hover Effects (Adapted from Contact Page, reverted Button) --- */
+
+        .navbar-nav .nav-link:hover {
+            color: var(--bs-primary) !important; /* Or var(--secondary-color) if preferred */
+            transform: translateY(-2px);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+         /* Reverted Button Styling - Now uses standard Bootstrap .btn-primary from styles.css */
+         /* Removed custom styles for .btn-primary and .btn-primary::before */
+
+
+        /* Card Hover Effect (Similar to Contact Page) */
+        .card {
+             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+             border-radius: 0.75rem; /* Match Bootstrap default if desired, or increase */
+             box-shadow: 0 10px 30px rgba(0,0,0,0.12), 0 1px 8px rgba(0,0,0,0.06);
+             background: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+             position: relative;
+             z-index: 1;
+        }
+
+        .card:hover {
+             transform: translateY(-8px); /* Less lift than contact card, more subtle */
+             box-shadow: 0 15px 35px rgba(0,0,0,0.18); /* Adjusted shadow on hover */
+        }
+
+         .bg-light.rounded-4 {
+            transition: all 0.3s ease;
+            background: rgba(248, 249, 250, 0.7) !important; /* Make bg-light slightly transparent */
+            backdrop-filter: blur(3px); /* Add slight blur */
+         }
+
+        .bg-light.rounded-4:hover {
+             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+             background: rgba(248, 249, 250, 0.9) !important; /* Less transparent on hover */
+             transform: translateY(-2px); /* Subtle lift */
+        }
+
+
+         /* Optional: Hover on footer links */
+         footer a.small:hover {
+            text-decoration: underline;
+            color: var(--primary-color); /* Match theme color */
+         }
+
+
+        /* --- Animated Background & Effects (Inspired by Contact Page) --- */
+
+         /* Background elements container */
+        .animated-background {
+            position: fixed; /* Fixed to cover the whole viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -3; /* Furthest back layer */
+            overflow: hidden; /* Hide elements that go beyond the viewport */
+            background: linear-gradient(180deg, #fdfdfd 0%, #e0e7ff 100%); /* Example background gradient */
+        }
+
+        /* Web spider effect container */
+        .web-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Allows clicking through */
+            z-index: -2; /* Behind content, above animated-background */
+        }
+
+        /* Individual web nodes (dots) */
+        .web-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(41, 55, 240, 0.5); /* Primary color dots */
+            border-radius: 50%;
+            /* Initial position set by JS */
+        }
+
+        /* Web lines connecting nodes */
+        .web-line {
+            position: absolute;
+            height: 1px; /* Line thickness */
+            background: linear-gradient(90deg, rgba(41, 55, 240, 0.1), rgba(159, 26, 226, 0.1)); /* Fainter gradient lines */
+            transform-origin: left center; /* Rotate from the start point */
+            z-index: -1; /* Behind nodes */
+            /* Width, left, top, and transform set by JS */
+        }
+
+
+        /* Butterfly container - JS will put butterfly elements here */
+         #butterflies-container {
+             position: fixed; /* Fixed position */
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             pointer-events: none; /* Allows clicking through */
+             z-index: -1; /* Above web, below content */
+         }
+
+        /* Individual butterfly element (wrapper for body and wings) */
+        .butterfly {
+            position: absolute; /* Positioned relative to its container (#butterflies-container) */
+            width: 30px; /* Size of the butterfly */
+            height: 30px;
+            pointer-events: none;
+            /* JS will set left/top and transform (rotation) */
+             filter: drop-shadow(0 0 5px rgba(255,255,255,0.5)); /* Softer shadow */
+            opacity: 0; /* Start hidden, fade in via JS */
+            transition: opacity 1s ease; /* Fade-in transition */
+        }
+
+        /* Butterfly body */
+        .butterfly-body {
+            position: absolute;
+            width: 4px;
+            height: 16px;
+            background: rgba(0,0,0,0.6);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 2px;
+            z-index: 3; /* Ensure body is above wings */
+        }
+
+        /* Butterfly wing base style */
+        .butterfly-wing {
+            position: absolute;
+            width: 15px;
+            height: 20px;
+            top: 5px;
+            background: linear-gradient(45deg, var(--primary-color) 10%, var(--secondary-color) 90%);
+            opacity: 0.8; /* Slightly more transparent */
+            border-radius: 50% 50% 50% 50% / 80% 80% 60% 60%; /* Shape the wings */
+            z-index: 2; /* Below body */
+        }
+
+        /* Left wing position and flap animation */
+        .butterfly-wing.left {
+            left: 3px;
+            transform-origin: right center; /* Pivot from the body side */
+            animation: flapLeft 0.15s ease-in-out infinite alternate; /* CSS handles flapping */
+        }
+
+        /* Right wing position and flap animation */
+        .butterfly-wing.right {
+            right: 3px;
+            transform-origin: left center; /* Pivot from the body side */
+            animation: flapRight 0.15s ease-in-out infinite alternate; /* CSS handles flapping */
+        }
+
+        /* Keyframes for wing flapping */
+        @keyframes flapLeft {
+            from { transform: rotateY(15deg) scale(1); }
+            to { transform: rotateY(70deg) scale(0.95); } /* Added slight scale for depth */
+        }
+
+        @keyframes flapRight {
+            from { transform: rotateY(-15deg) scale(1); }
+            to { transform: rotateY(-70deg) scale(0.95); } /* Added slight scale for depth */
+        }
+
+
+        /* --- Pulse Effect for Feature Icons (Adapted from Contact Page) --- */
+        .feature {
+            position: relative;
+            z-index: 1;
+            display: inline-flex; /* Needed for centering pseudo element */
+            justify-content: center;
+            align-items: center;
+        }
+
+         /* Outer ring pulse animation */
+        .feature::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: inherit; /* Use parent border-radius (should be rounded-3) */
+            background: transparent; /* Ring is border */
+            border: 2px solid;
+            border-color: var(--primary-color); /* Pulse in primary color */
+            z-index: -1;
+            opacity: 0.7;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0.7;
+            }
+            80%, 100% {
+                transform: translate(-50%, -50%) scale(1.5); /* Expand further */
+                opacity: 0;
+            }
+        }
+
+        /* Inner element subtle pulse */
+        .feature > i { /* Assuming the icon is direct child */
+             animation: pulse-icon 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+         @keyframes pulse-icon {
+             0% { transform: scale(1); }
+             50% { transform: scale(1.08); }
+             100% { transform: scale(1); }
+         }
+
+    </style>
+</head>
+<body class="d-flex flex-column h-100 bg-light">
+
+     <div class="animated-background">
+        <div class="web-container" id="webContainer"></div>
+        <div id="butterflies-container"></div>
+    </div>
+
+    <main class="flex-shrink-0">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Moataz Elmesmary <i class="bi bi-code-slash"></i></span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#About me">About Me</a></li>
+                        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Resume</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <section>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h2 class="text-primary fw-bolder mb-0">Education </h2>
+                            <div class="text-center">
+                                <small class="text-muted d-block" style="font-size: 0.7em; margin-top: 0.25rem;">not up-to-date</small>
+
+ <a class="btn btn-primary px-4 py-3" href="./assets/MoatazElmesmary.Resume.pdf" target="_blank" download="Moataz-Elmesmary-Resume">
+<div class="d-inline-block bi bi-download me-2"></div>
+ Download Resume
+ </a>
+ </div>
+                        </div>
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="row align-items-center gx-5">
+                                    <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                        <div class="bg-light p-4 rounded-4">
+                                            <div class="text-secondary fw-bolder mb-2" style="text-align:center">2019 - 2023</div>
+                                            <div class="mb-2">
+                                                <div class="small fw-bolder" style="text-align:center">Mansoura University</div>
+                                            </div>
+                                            <div class="fst-italic">
+                                                <div class="small text-muted" style="text-align:center">BSc in Computer Science - Medical Informatics spec.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8"><div>As a Computer Science graduate with a major in Medical Informatics, Moataz possess a deep-seated passion for Data Science, ML, and DL. His academic journey has equipped him with a strong foundation in these cutting-edge fields, enabled him to effectively apply his knowledge to various domains, especially in medical field.</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="pb-5"></div>
+
+                    <section>
+                        <div class="card shadow border-0 rounded-4 mb-5">
+                            <div class="card-body p-5">
+                                <div class="mb-5">
+                                    <div class="d-flex align-items-center mb-4">
+                                         <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
+                                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Professional Skills</span></h3> 
+                                    </div> working on it ..
+                           <!--         <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Data Analysis</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Data Visualization</div></div>
+                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Statistical Analysis</div></div>
+                                    </div>
+                                    <div class="row row-cols-1 row-cols-md-3">
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Extract, Transform, Load (ETL)</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Web Development</div></div>
+                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">User Interface Design</div></div>
+                                    </div>
+                                </div>
+                                <div class="mb-0">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-code-slash"></i></div>
+                                        <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">Languages</span></h3>
+                                    </div>
+                                    <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Python</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">SQL</div></div>
+                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">HTML / CSS</div></div>
+                                    </div>
+                                     <div class="row row-cols-1 row-cols-md-3">
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">JavaScript</div></div>
+                                        <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Machine Learning (ML)</div></div>
+                                        <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Deep Learning (DL)</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div> -->
+    </main>
+    <footer class="bg-white py-4 mt-auto">
+        <div class="container px-5">
+            <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                <div class="col-auto">
+                    <div class="small m-0">Copyright &copy; 2025 Moataz Elmesmary</div>
+                </div>
+                <div class="col-auto">
+                    <a class="small" href="/privacy.html">Privacy</a>
+                    <span class="mx-1">&middot;</span>
+                    <a class="small" href="/terms.html">Terms</a>
+                    <span class="mx-1">&middot;</span>
+                    <a class="small" href="/contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+             // --- Animated Background Effects ---
+
+            // --- Web Spider Effect (Adapted from Contact Page) ---
+            const webContainer = document.getElementById('webContainer');
+            let mouseX = 0;
+            let mouseY = 0;
+
+            // Track mouse position
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            if (webContainer) { // Ensure the container exists
+                const webNodes = [];
+                const webLines = [];
+                // Adjust node count based on screen size for performance
+                const nodeCount = Math.min(40, Math.floor(window.innerWidth / 50)); // Increased nodes, smaller density factor
+                const maxDistance = 150; // Decreased connection distance for finer web
+                const repelRadius = 80; // Radius around mouse to repel nodes
+                const repelStrength = 1.5; // How strongly mouse repels nodes
+
+                // Create web nodes
+                for (let i = 0; i < nodeCount; i++) {
+                    const node = document.createElement('div');
+                    node.className = 'web-node';
+
+                    const posX = Math.random() * window.innerWidth;
+                    const posY = Math.random() * window.innerHeight;
+
+                    node.style.left = posX + 'px';
+                    node.style.top = posY + 'px';
+
+                    webNodes.push({
+                        element: node,
+                        x: posX,
+                        y: posY,
+                        // Slightly faster random initial speed
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        // Store original position for mouse repel effect
+                        originX: posX,
+                        originY: posY,
+                        // Store random speed modifier
+                        speedModifier: 0.8 + Math.random() * 0.4
+                    });
+
+                    webContainer.appendChild(node);
+                }
+
+                // Function to update web lines connecting nodes
+                function updateWebLines() {
+                    // Remove existing lines efficiently
+                    webLines.forEach(line => {
+                         if (line.parentNode === webContainer) { // Check parent before removing
+                            webContainer.removeChild(line);
+                         }
+                    });
+                    webLines.length = 0; // Clear the array
+
+                    // Create new lines based on node proximity
+                    for (let i = 0; i < webNodes.length; i++) {
+                        for (let j = i + 1; j < webNodes.length; j++) {
+                            const node1 = webNodes[i];
+                            const node2 = webNodes[j];
+
+                            const dx = node2.x - node1.x;
+                            const dy = node2.y - node1.y;
+                            const distance = Math.sqrt(dx * dx + dy * dy);
+
+                            if (distance < maxDistance) {
+                                const line = document.createElement('div');
+                                line.className = 'web-line';
+
+                                line.style.width = distance + 'px';
+                                line.style.left = node1.x + 'px';
+                                line.style.top = node1.y + 'px';
+
+                                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                                line.style.transform = `rotate(${angle}deg)`;
+
+                                // Adjust opacity based on distance
+                                line.style.opacity = Math.max(0, (1 - distance / maxDistance) * 0.3).toString(); // Fainter lines
+
+                                webContainer.appendChild(line);
+                                webLines.push(line);
+                            }
+                        }
+                    }
+                }
+
+                // Animate web nodes and update lines
+                let animationFrameIdWeb;
+                function animateWebNodes() {
+                    webNodes.forEach(node => {
+                        // Apply base velocity
+                        node.x += node.vx * node.speedModifier;
+                        node.y += node.vy * node.speedModifier;
+
+                        // Boundary check: bounce off edges
+                        if (node.x < 0 || node.x > window.innerWidth) node.vx *= -1;
+                        if (node.y < 0 || node.y > window.innerHeight) node.vy *= -1;
+
+                        // Mouse interaction (repel)
+                        const mouseDx = node.x - mouseX;
+                        const mouseDy = node.y - mouseY;
+                        const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
+
+                        if (mouseDistance < repelRadius) {
+                            // Calculate repulsion force vector
+                            const repelForceX = (mouseDx / mouseDistance) * repelStrength;
+                            const repelForceY = (mouseDy / mouseDistance) * repelStrength;
+
+                            // Apply force, adding some easing or resistance might be needed for smoother movement
+                            node.x += repelForceX;
+                            node.y += repelForceY;
+                        } else {
+                             // Optional: Slowly drift back towards original position if far from mouse
+                             // This prevents nodes from getting stuck in corners
+                             const driftX = node.originX - node.x;
+                             const driftY = node.originY - node.y;
+                             const driftDistance = Math.sqrt(driftX * driftX + driftY * driftY);
+                             if (driftDistance > 1) { // Only drift if far enough
+                                 node.x += driftX * 0.005; // Small drift factor
+                                 node.y += driftY * 0.005;
+                             }
+                        }
+
+
+                        // Update element position
+                        node.element.style.left = node.x + 'px';
+                        node.element.style.top = node.y + 'px';
+                    });
+
+                    // Update lines after moving nodes
+                    updateWebLines();
+
+                    animationFrameIdWeb = requestAnimationFrame(animateWebNodes); // Loop
+                }
+
+                 // Adjust node count and restart animation on window resize
+                 let resizeTimeout;
+                 window.addEventListener('resize', () => {
+                     clearTimeout(resizeTimeout);
+                     resizeTimeout = setTimeout(() => {
+                         // Stop current animation
+                         cancelAnimationFrame(animationFrameIdWeb);
+                         // Remove existing nodes and lines
+                         webNodes.forEach(node => node.element.remove());
+                         webLines.forEach(line => line.remove());
+                         webNodes.length = 0;
+                         webLines.length = 0;
+                         // Re-create and start animation
+                         // Re-initialization logic similar to the first creation loop...
+                          // Create web nodes again
+                            const newNodeCount = Math.min(40, Math.floor(window.innerWidth / 50));
+                            for (let i = 0; i < newNodeCount; i++) {
+                                const node = document.createElement('div');
+                                node.className = 'web-node';
+                                const posX = Math.random() * window.innerWidth;
+                                const posY = Math.random() * window.innerHeight;
+                                node.style.left = posX + 'px';
+                                node.style.top = posY + 'px';
+                                webNodes.push({
+                                    element: node,
+                                    x: posX,
+                                    y: posY,
+                                    vx: (Math.random() - 0.5) * 0.5,
+                                    vy: (Math.random() - 0.5) * 0.5,
+                                    originX: posX,
+                                    originY: posY,
+                                    speedModifier: 0.8 + Math.random() * 0.4
+                                });
+                                webContainer.appendChild(node);
+                            }
+                         animateWebNodes(); // Restart animation
+                     }, 250); // Debounce resize
+                 });
+
+
+                // Start the web spider animation when the DOM is ready
+                animateWebNodes();
+            } else {
+                console.error("Web container element (#webContainer) not found.");
+            }
+
+
+            // --- Flying Butterflies (Adapted from Contact Page CSS) ---
+            const butterfliesContainer = document.getElementById('butterflies-container');
+            if (butterfliesContainer) { // Ensure container exists
+                const animatedButterflies = [];
+                const numButterflies = 5; // Number of butterflies
+
+                // Create butterflies
+                for (let i = 0; i < numButterflies; i++) {
+                    const butterflyElement = document.createElement('div');
+                    butterflyElement.classList.add('butterfly');
+
+                    // Create nested elements for body and wings (as defined in CSS)
+                    const body = document.createElement('div');
+                    body.classList.add('butterfly-body');
+                    const leftWing = document.createElement('div');
+                    leftWing.classList.add('butterfly-wing', 'left');
+                    const rightWing = document.createElement('div');
+                    rightWing.classList.add('butterfly-wing', 'right');
+
+                    butterflyElement.appendChild(body);
+                    butterflyElement.appendChild(leftWing);
+                    butterflyElement.appendChild(rightWing);
+
+                    // Random initial position (within bounds)
+                    const initialX = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
+                    const initialY = Math.random() * window.innerHeight * 0.8 + window.innerHeight * 0.1;
+
+                     // Start slightly off-screen sometimes
+                    const startEdge = Math.floor(Math.random() * 4); // 0:top, 1:right, 2:bottom, 3:left
+                    let startX, startY;
+                    let initialVx, initialVy;
+
+                    switch (startEdge) {
+                        case 0: // top
+                            startX = Math.random() * window.innerWidth;
+                            startY = -50; // Start above view
+                            initialVx = (Math.random() - 0.5) * 0.5;
+                            initialVy = 0.5 + Math.random() * 0.5; // Move downwards
+                            break;
+                        case 1: // right
+                            startX = window.innerWidth + 50; // Start right of view
+                            startY = Math.random() * window.innerHeight;
+                            initialVx = -(0.5 + Math.random() * 0.5); // Move leftwards
+                            initialVy = (Math.random() - 0.5) * 0.5;
+                            break;
+                        case 2: // bottom
+                            startX = Math.random() * window.innerWidth;
+                            startY = window.innerHeight + 50; // Start below view
+                            initialVx = (Math.random() - 0.5) * 0.5;
+                            initialVy = -(0.5 + Math.random() * 0.5); // Move upwards
+                            break;
+                        case 3: // left
+                            startX = -50; // Start left of view
+                            startY = Math.random() * window.innerHeight;
+                            initialVx = 0.5 + Math.random() * 0.5; // Move rightwards
+                            initialVy = (Math.random() - 0.5) * 0.5;
+                            break;
+                    }
+
+
+                    butterflyElement.style.left = `${startX}px`;
+                    butterflyElement.style.top = `${startY}px`;
+                    butterflyElement.style.opacity = 0; // Keep hidden initially
+
+                    animatedButterflies.push({
+                        element: butterflyElement,
+                        x: startX,
+                        y: startY,
+                        vx: initialVx * (0.5 + Math.random() * 0.5), // Varied speed
+                        vy: initialVy * (0.5 + Math.random() * 0.5),
+                        flutterOffset: Math.random() * Math.PI * 2, // Random start for flutter sine wave
+                        flutterSpeed: 0.03 + Math.random() * 0.03 // Varied flutter speed
+                    });
+
+                    butterfliesContainer.appendChild(butterflyElement);
+
+                    // Fade in the butterfly after a short delay
+                    setTimeout(() => {
+                         butterflyElement.style.opacity = 1;
+                    }, 100 + i * 200); // Stagger the fade-in
+                }
+
+                // Animate butterflies
+                let animationFrameIdButterflies;
+                function animateButterflies() {
+                    animatedButterflies.forEach(b => {
+                        // Update position
+                        b.x += b.vx;
+                        b.y += b.vy;
+
+                        // Apply flutter (vertical sine wave)
+                         const flutterY = b.y + Math.sin(b.x * b.flutterSpeed + b.flutterOffset) * 15; // Adjust amplitude (15) as needed
+
+                        // Wrap around edges
+                        if (b.x < -50) b.x = window.innerWidth + 50;
+                        if (b.x > window.innerWidth + 50) b.x = -50;
+                        if (b.y < -50) b.y = window.innerHeight + 50;
+                        if (b.y > window.innerHeight + 50) b.y = -50;
+
+                        // Optional: Periodically change direction slightly
+                        if (Math.random() < 0.005) { // Small chance
+                             const angleChange = (Math.random() - 0.5) * Math.PI / 4; // Change angle by up to 45 degrees
+                             const currentAngle = Math.atan2(b.vy, b.vx);
+                             const newAngle = currentAngle + angleChange;
+                             const speed = Math.sqrt(b.vx * b.vx + b.vy * b.vy); // Keep speed consistent
+                             b.vx = Math.cos(newAngle) * speed;
+                             b.vy = Math.sin(newAngle) * speed;
+                        }
+
+
+                        // Update element position
+                        b.element.style.left = `${b.x}px`;
+                        // Use the fluttered Y position
+                        b.element.style.top = `${flutterY}px`;
+
+                        // Rotate butterfly element to face direction of movement
+                        const angle = Math.atan2(b.vy, b.vy) * 180 / Math.PI; // Fixed a bug here, should use b.vy, b.vx
+                         // Re-calculating angle using correct vx, vy
+                         const angleCorrected = Math.atan2(b.vy, b.vx) * 180 / Math.PI;
+
+                        // Adjust rotation if your CSS butterfly faces a specific direction by default
+                        // e.g., if it faces right, add 0 or 180; if it faces up, add 90 or -90
+                        b.element.style.transform = `rotate(${angleCorrected + 90}deg)`; // Assuming the CSS butterfly faces "up" (0 degrees) by default
+                    });
+
+                    animationFrameIdButterflies = requestAnimationFrame(animateButterflies); // Loop
+                }
+
+                 // Adjust butterfly positions on window resize
+                 let butterflyResizeTimeout;
+                 window.addEventListener('resize', () => {
+                      clearTimeout(butterflyResizeTimeout);
+                      butterflyResizeTimeout = setTimeout(() => {
+                           // Simple repositioning, could be more complex
+                           animatedButterflies.forEach(b => {
+                               // Keep proportional position or re-randomize
+                               b.x = Math.random() * window.innerWidth;
+                               b.y = Math.random() * window.innerHeight;
+                               b.element.style.left = `${b.x}px`;
+                               b.element.style.top = `${b.y}px`;
+                               // Also update base Y for flutter if using it
+                               // Note: This simple repositioning on resize might not be ideal,
+                               // a more complex solution would track percentage or relative positions.
+                               // For now, they just pop to a new random spot on resize end.
+                           });
+                      }, 250); // Debounce resize
+                 });
+
+
+                // Start butterfly animation when the DOM is ready
+                animateButterflies();
+            } else {
+                 console.error("Butterflies container element (#butterflies-container) not found.");
+            }
+
+
+        }); // End DOMContentLoaded
+    </script>
+</body>
+</html>
