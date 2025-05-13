@@ -1,5 +1,5 @@
 // Colorful Mouse Parallax Effect
-document.addEventListener('DOMContentLoaded', () => {
+function initParallaxEffect() {
   // Create a container for our particles
   const particleContainer = document.createElement('div');
   particleContainer.id = 'particle-container';
@@ -174,7 +174,43 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Start animation
   animate();
+}
+
+function initFormHandler() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            // Log the submission
+            console.log('Form submitted at ' + new Date().toLocaleTimeString());
+            
+            // Update button state
+            document.getElementById('submitButton').innerHTML = 'Sending...';
+            document.getElementById('submitButton').disabled = true;
+        });
+    }
+}
+
+// Use both DOMContentLoaded and window.onload to ensure scripts run properly
+document.addEventListener('DOMContentLoaded', function() {
+    // Try to initialize immediately
+    initParallaxEffect();
+    initFormHandler();
 });
+
+// Backup initialization with window.onload
+window.onload = function() {
+    // If the particle container doesn't exist yet, initialize
+    if (!document.getElementById('particle-container')) {
+        initParallaxEffect();
+    }
+    
+    // Initialize form handler if not already done
+    const form = document.getElementById('contactForm');
+    if (form && !form.hasAttribute('data-initialized')) {
+        initFormHandler();
+        form.setAttribute('data-initialized', 'true');
+    }
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('contactForm');
