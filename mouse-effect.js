@@ -223,3 +223,36 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('submitButton').disabled = true;
     });
 });
+
+// Visitor counter using local storage
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to get visitor count from localStorage or initialize it
+    function getVisitorCount() {
+        // Try to get the count from localStorage
+        let count = localStorage.getItem('visitorCount');
+        
+        // If no count exists, start at 0
+        if (count === null) {
+            count = 0;
+        } else {
+            count = parseInt(count);
+        }
+        
+        // Increment the count for this visit
+        count++;
+        
+        // Save the updated count
+        localStorage.setItem('visitorCount', count);
+        
+        return count;
+    }
+    
+    // Get the visitor count element
+    const visitorCountElement = document.getElementById('visitor-count');
+    
+    // Update the visitor count if the element exists
+    if (visitorCountElement) {
+        const count = getVisitorCount();
+        visitorCountElement.textContent = `👁️ Visitors: ${count}`;
+    }
+});
