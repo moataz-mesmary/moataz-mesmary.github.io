@@ -15,10 +15,10 @@
         <style>
             body,html{overflow-x:hidden;}html{scroll-behavior:smooth;}
             .profile{position:relative;z-index:1;}
-.profile::before{content:'';position:absolute;inset:-10px;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;background:conic-gradient(from 0deg,#2937f0,#9f1ae2,#ff6b6b,#ffd700,#00d4ff,#2937f0);animation:auroraRotate 6s linear infinite,morphShape 9s ease-in-out infinite;z-index:-1;filter:blur(28px);opacity:.35;}
-.profile::after{content:'';position:absolute;inset:-3px;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;background:linear-gradient(135deg,#2937f0,#9f1ae2,#ff6b6b,#ffd700,#00d4ff,#2937f0);background-size:400% 400%;animation:gradSpin 8s ease infinite,morphShape 9s ease-in-out infinite;z-index:-1;filter:blur(6px);opacity:.4;}
-            @keyframes auroraRotate{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-            @keyframes gradSpin{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+            /* Soft glow — gentle pulse, no aurora */
+            .profile::before{content:'';position:absolute;inset:-6px;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;background:radial-gradient(circle,rgba(159,26,226,.35) 0%,rgba(41,55,240,.25) 50%,transparent 75%);animation:softPulse 4s ease-in-out infinite,morphShape 12s ease-in-out infinite;z-index:-1;filter:blur(18px);opacity:.55;}
+            .profile::after{content:'';position:absolute;inset:-2px;border-radius:30% 70% 70% 30%/30% 30% 70% 70%;background:linear-gradient(135deg,#2937f0,#9f1ae2);animation:morphShape 12s ease-in-out infinite;z-index:-1;filter:blur(3px);opacity:.25;}
+            @keyframes softPulse{0%,100%{opacity:.4;transform:scale(1);}50%{opacity:.7;transform:scale(1.04);}}
             @keyframes morphShape{0%,100%{border-radius:30% 70% 70% 30%/30% 30% 70% 70%;}25%{border-radius:58% 42% 75% 25%/76% 46% 54% 24%;}50%{border-radius:50% 50% 33% 67%/55% 27% 73% 45%;}75%{border-radius:33% 67% 58% 42%/63% 68% 32% 37%;}}
             .profile-img{position:relative;z-index:2;}
             header{position:relative;overflow:hidden;}
@@ -145,7 +145,6 @@
                 border-radius:8px;
                 transition:color .25s,background .25s;
                 letter-spacing:.2px;
-                /* remove Bootstrap default underline behavior */
                 text-decoration:none !important;
             }
             .nav-link-custom span{position:relative;z-index:1;}
@@ -156,12 +155,10 @@
             }
             .nav-link-custom:hover{color:#2937f0!important;}
             .nav-link-custom:hover::before{opacity:1;}
-
-            /* THE FIX — underline sits exactly at the bottom edge of the link */
             .nav-link-custom::after{
                 content:'';
                 position:absolute;
-                bottom:0px;          /* flush with bottom of padding box */
+                bottom:0px;
                 left:50%;
                 width:0;
                 height:2px;
@@ -171,10 +168,7 @@
                 transform:translateX(-50%);
             }
             .nav-link-custom:hover::after{width:70%;}
-
-            /* Override Bootstrap .nav-link::after so it doesn't interfere */
             .navbar .nav-link::after{display:none !important;}
-            /* Re-enable only for our custom class */
             .nav-link-custom::after{display:block !important;}
 
             .nav-cta-btn{
@@ -195,105 +189,133 @@
             .nav-cta-btn:hover i{transform:translateX(4px);}
             .tog-line{display:block;width:24px;height:2px;background:linear-gradient(90deg,#2937f0,#9f1ae2);border-radius:2px;transition:all .3s;}
             .profile{display:inline-block;}
+
             /* ============ RESPONSIVE MOBILE FIXES ============ */
 
-/* Tablets and below */
-@media (max-width: 991px){
-    .container.px-5{padding-left:1.25rem!important;padding-right:1.25rem!important;}
-    
-    /* Navbar collapse styling */
-    #mainNav .navbar-collapse{
-        background:rgba(255,255,255,0.98);
-        margin-top:12px;
-        padding:16px;
-        border-radius:14px;
-        box-shadow:0 10px 30px rgba(41,55,240,.1);
-    }
-    #mainNav .navbar-nav{gap:4px;}
-    .nav-link-custom{padding:10px 14px!important;}
-    .nav-link-custom::after{display:none!important;}
-    .nav-cta-btn{margin-top:8px;justify-content:center;}
-    
-    body{overflow-x:hidden;}
-}
+            /* Tablets and below */
+            @media (max-width: 991px){
+                .container.px-5{padding-left:1.25rem!important;padding-right:1.25rem!important;}
+                #mainNav .navbar-collapse{
+                    background:rgba(255,255,255,0.98);
+                    margin-top:12px;
+                    padding:16px;
+                    border-radius:14px;
+                    box-shadow:0 10px 30px rgba(41,55,240,.1);
+                }
+                #mainNav .navbar-nav{gap:4px;}
+                .nav-link-custom{padding:10px 14px!important;}
+                .nav-link-custom::after{display:none!important;}
+                .nav-cta-btn{margin-top:8px;justify-content:center;}
+                body{overflow-x:hidden;}
+            }
 
-/* Mobile phones */
-@media (max-width: 767px){
-    /* Header */
-    header{padding:2rem 0 1rem!important;}
-    .display-3{font-size:2rem!important;line-height:1.2!important;}
-    .fs-3{font-size:1.1rem!important;}
-    h2.skills-h2{font-size:.95rem!important;line-height:1.6!important;}
-    .badge.bg-gradient-primary-to-secondary .text-uppercase{font-size:.65rem;letter-spacing:.5px;}
-    
-    /* Buttons */
-    .btn-lg{padding:.8rem 1.5rem!important;font-size:.9rem!important;}
-    .d-grid.gap-3.d-sm-flex{gap:.75rem!important;}
-    
-    /* Profile image */
-    .profile{max-width:240px;}
-    .profile-img{max-width:100%;height:auto;}
-    .profile::before{inset:-8px!important;filter:blur(20px)!important;}
-    .profile::after{inset:-2px!important;filter:blur(4px)!important;}
-    .dots-1,.dots-2,.dots-3,.dots-4{display:none!important;}
-    
-    /* Section headings */
-    .display-5{font-size:1.8rem!important;}
-    h4.fw-bolder{font-size:1.15rem!important;}
-    h5.fw-bolder{font-size:1rem!important;}
-    .lead{font-size:1rem!important;}
-    
-    /* About section */
-    section.bg-light{padding:2rem 0!important;}
-    .my-5{margin-top:2rem!important;margin-bottom:2rem!important;}
-    
-    /* Award cards */
-    .card .card-body.p-4{padding:1.25rem!important;}
-    .card img.img-fluid{max-height:200px!important;}
-    .badge.bg-primary{font-size:.7rem;margin-bottom:4px;display:inline-block;}
-    
-    /* Social icons */
-    .fs-2.gap-4{gap:1rem!important;font-size:1.5rem!important;}
-    
-    /* VISITOR COUNTER */
-    #gvs{padding:50px 16px!important;}
-    #gvs-num{font-size:3.8rem!important;letter-spacing:-2px!important;}
-    .gvs-label{font-size:.62rem!important;letter-spacing:3px!important;}
-    .gvs-sub{font-size:.65rem!important;letter-spacing:2px!important;}
-    
-    /* FOOTER */
-    .wf-inner{padding:40px 0 25px!important;}
-    .wf-brand{font-size:1.4rem!important;}
-    .wf-desc{max-width:100%!important;font-size:.85rem!important;}
-    .wf-socials{grid-template-columns:1fr 1fr!important;gap:8px!important;}
-    .wf-sbtn{padding:10px 12px!important;font-size:.72rem!important;}
-    .wf-sbtn i{font-size:.95rem!important;}
-    .wf-chip{font-size:.68rem!important;padding:4px 10px!important;}
-    .wf-bottom{font-size:.65rem!important;padding:16px 12px!important;line-height:1.8;}
-    
-    /* YouTube cards */
-    #youtube-content .card-img-top{height:180px!important;}
-}
+            /* Mobile phones */
+            @media (max-width: 767px){
+                /* Header */
+                header{padding:2rem 0 1rem!important;}
 
-/* Very small phones */
-@media (max-width: 480px){
-    .nav-brand-text{font-size:1rem!important;}
-    .display-3{font-size:1.7rem!important;}
-    .display-5{font-size:1.5rem!important;}
-    #gvs-num{font-size:3rem!important;}
-    .btn-lg{width:100%;}
-    .d-sm-flex{flex-direction:column!important;}
-    .btn-lg.me-sm-3{margin-right:0!important;margin-bottom:.5rem;}
-    
-    /* Stack footer socials on tiny screens */
-    .wf-socials{grid-template-columns:1fr!important;}
-    
-    /* Award card: center stacked content */
-    .card .row.align-items-center > div{text-align:center;}
-    
-    /* Featured in badges */
-    .badge.bg-primary{display:block;margin-bottom:6px;text-align:center;}
-}
+                /* FIX: Badge at top — allow wrapping, shrink text */
+                .badge.bg-gradient-primary-to-secondary{
+                    white-space:normal!important;
+                    max-width:95%!important;
+                    display:inline-block!important;
+                    padding:.5rem .85rem!important;
+                    line-height:1.5!important;
+                }
+                .badge.bg-gradient-primary-to-secondary .text-uppercase{
+                    font-size:.6rem!important;
+                    letter-spacing:.3px!important;
+                    white-space:normal!important;
+                    word-wrap:break-word!important;
+                }
+
+                .display-3{font-size:2rem!important;line-height:1.2!important;}
+                .fs-3{font-size:1.1rem!important;}
+                h2.skills-h2{font-size:.95rem!important;line-height:1.6!important;}
+
+                /* Buttons */
+                .btn-lg{padding:.8rem 1.5rem!important;font-size:.9rem!important;}
+                .d-grid.gap-3.d-sm-flex{gap:.75rem!important;}
+
+                /* FIX: Profile image — keep natural size, don't force max-width on wrapper */
+                .profile{
+                    display:inline-block!important;
+                    max-width:none!important;
+                }
+                .profile-img{
+                    max-width:280px!important;
+                    width:100%!important;
+                    height:auto!important;
+                }
+                /* Softer glow on mobile */
+                .profile::before{inset:-5px!important;filter:blur(14px)!important;opacity:.45!important;}
+                .profile::after{inset:-2px!important;filter:blur(2px)!important;opacity:.2!important;}
+                /* Hide decorative dots on mobile */
+                .dots-1,.dots-2,.dots-3,.dots-4{display:none!important;}
+
+                /* Section headings */
+                .display-5{font-size:1.8rem!important;}
+                h4.fw-bolder{font-size:1.15rem!important;}
+                h5.fw-bolder{font-size:1rem!important;}
+                .lead{font-size:1rem!important;}
+
+                /* About section */
+                section.bg-light{padding:2rem 0!important;}
+                .my-5{margin-top:2rem!important;margin-bottom:2rem!important;}
+
+                /* Award cards */
+                .card .card-body.p-4{padding:1.25rem!important;}
+                .card img.img-fluid{max-height:200px!important;}
+                .badge.bg-primary{font-size:.7rem;margin-bottom:4px;display:inline-block;}
+
+                /* Social icons */
+                .fs-2.gap-4{gap:1rem!important;font-size:1.5rem!important;}
+
+                /* VISITOR COUNTER */
+                #gvs{padding:50px 16px!important;}
+                #gvs-num{font-size:3.8rem!important;letter-spacing:-2px!important;}
+                .gvs-label{font-size:.62rem!important;letter-spacing:3px!important;}
+                .gvs-sub{font-size:.65rem!important;letter-spacing:2px!important;}
+
+                /* FOOTER */
+                .wf-inner{padding:40px 0 25px!important;}
+                .wf-brand{font-size:1.4rem!important;}
+                .wf-desc{max-width:100%!important;font-size:.85rem!important;}
+                .wf-socials{grid-template-columns:1fr 1fr!important;gap:8px!important;}
+                .wf-sbtn{padding:10px 12px!important;font-size:.72rem!important;}
+                .wf-sbtn i{font-size:.95rem!important;}
+                .wf-chip{font-size:.68rem!important;padding:4px 10px!important;}
+                .wf-bottom{font-size:.65rem!important;padding:16px 12px!important;line-height:1.8;}
+
+                /* YouTube cards */
+                #youtube-content .card-img-top{height:180px!important;}
+            }
+
+            /* Very small phones */
+            @media (max-width: 480px){
+                .nav-brand-text{font-size:1rem!important;}
+                .display-3{font-size:1.7rem!important;}
+                .display-5{font-size:1.5rem!important;}
+                #gvs-num{font-size:3rem!important;}
+                .btn-lg{width:100%;}
+                .d-sm-flex{flex-direction:column!important;}
+                .btn-lg.me-sm-3{margin-right:0!important;margin-bottom:.5rem;}
+
+                /* Tighter badge on tiny screens */
+                .badge.bg-gradient-primary-to-secondary .text-uppercase{font-size:.55rem!important;}
+
+                /* Smaller profile image on tiny screens */
+                .profile-img{max-width:240px!important;}
+
+                /* Stack footer socials on tiny screens */
+                .wf-socials{grid-template-columns:1fr!important;}
+
+                /* Award card: center stacked content */
+                .card .row.align-items-center > div{text-align:center;}
+
+                /* Featured in badges */
+                .badge.bg-primary{display:block;margin-bottom:6px;text-align:center;}
+            }
         </style>
     </head>
     <body class="d-flex flex-column h-100">
